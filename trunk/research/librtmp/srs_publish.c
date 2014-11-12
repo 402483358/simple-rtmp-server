@@ -33,7 +33,7 @@ gcc srs_publish.c ../../objs/lib/srs_librtmp.a -g -O0 -lstdc++ -o srs_publish
 int main(int argc, char** argv)
 {
     printf("publish rtmp stream to server like FMLE/FFMPEG/Encoder\n");
-    printf("srs(simple-rtmp-server) client librtmp library.\n");
+    printf("library.\n");
     printf("version: %d.%d.%d\n", srs_version_major(), srs_version_minor(), srs_version_revision());
     
     if (argc <= 1) {

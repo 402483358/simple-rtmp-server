@@ -32,7 +32,7 @@ gcc srs_play.c ../../objs/lib/srs_librtmp.a -g -O0 -lstdc++ -o srs_play
 int main(int argc, char** argv)
 {
     printf("suck rtmp stream like rtmpdump\n");
-    printf("srs(simple-rtmp-server) client librtmp library.\n");
+    printf("library.\n");
     printf("version: %d.%d.%d\n", srs_version_major(), srs_version_minor(), srs_version_revision());
     
     if (argc <= 1) {

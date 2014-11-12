@@ -106,7 +106,7 @@ cat << END >$FILE
 int main(int argc, char** argv) 
 {
     printf("Example for srs-librtmp\n");
-    printf("SRS(simple-rtmp-server) client librtmp library.\n");
+    printf("client librtmp library.\n");
     printf("version: %d.%d.%d\n", srs_version_major(), srs_version_minor(), srs_version_revision());
     
     srs_rtmp_t rtmp = srs_rtmp_create("rtmp://ossrs.net/live/livestream");

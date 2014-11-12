@@ -4,7 +4,7 @@
 ### END INIT INFO
 
 # the config of ROOT, user must modify it when start srs from other directory,
-# it's ok to use the script by command ./etc/init.d/simple-rtmp-server
+
 ROOT="./"
 APP="./objs/srs"
 CONFIG="./conf/demo.19350.conf"

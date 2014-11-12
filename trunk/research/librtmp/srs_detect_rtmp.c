@@ -60,7 +60,7 @@ int main(int argc, char** argv)
     int timeout = 0;
 
     printf("detect rtmp stream\n");
-    printf("srs(simple-rtmp-server) client librtmp library.\n");
+    printf("library.\n");
     printf("version: %d.%d.%d\n", srs_version_major(), srs_version_minor(), srs_version_revision());
     
     if (argc <= 3) {

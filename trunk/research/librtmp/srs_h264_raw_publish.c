@@ -79,7 +79,7 @@ int read_h264_frame(char* data, int size, char** pp, int* pnb_start_code, int fp
 int main(int argc, char** argv)
 {
     printf("publish raw h.264 as rtmp stream to server like FMLE/FFMPEG/Encoder\n");
-    printf("SRS(simple-rtmp-server) client librtmp library.\n");
+    printf("library.\n");
     printf("version: %d.%d.%d\n", srs_version_major(), srs_version_minor(), srs_version_revision());
     
     if (argc <= 2) {

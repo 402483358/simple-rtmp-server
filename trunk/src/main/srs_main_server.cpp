@@ -186,7 +186,7 @@ int main(int argc, char** argv)
         return ret;
     }
     
-    srs_trace("srs(simple-rtmp-server) "RTMP_SIG_SRS_VERSION);
+    srs_trace("uubridge "RTMP_SIG_SRS_VERSION);
     srs_trace("license: "RTMP_SIG_SRS_LICENSE);
     srs_trace("authors: "RTMP_SIG_SRS_PRIMARY_AUTHROS);
     srs_trace("contributors: "SRS_AUTO_CONSTRIBUTORS);

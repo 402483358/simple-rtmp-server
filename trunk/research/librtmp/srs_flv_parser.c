@@ -46,7 +46,7 @@ int main(int argc, char** argv)
     srs_flv_t flv;
     
     printf("parse and show flv file detail.\n");
-    printf("srs(simple-rtmp-server) client librtmp library.\n");
+    printf("library.\n");
     printf("version: %d.%d.%d\n", srs_version_major(), srs_version_minor(), srs_version_revision());
     
     if (argc <= 1) {
