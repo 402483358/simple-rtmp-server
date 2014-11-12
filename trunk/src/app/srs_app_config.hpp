@@ -474,7 +474,6 @@ public:
     * whether debug_srs_upnode is enabled of vhost.
     * debug_srs_upnode is very important feature for tracable log,
     * but some server, for instance, flussonic donot support it.
-    * @see https://github.com/winlinvip/simple-rtmp-server/issues/160
     * @return true when debug_srs_upnode is ok; otherwise, false.
     * @remark, default true.
     */

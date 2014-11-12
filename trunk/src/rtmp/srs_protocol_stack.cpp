@@ -1145,7 +1145,7 @@ int SrsProtocol::read_message_header(SrsChunkStream* chunk, char fmt, int bh_siz
         // 0x04             where: message_type=4(protocol control user-control message)
         // 0x00 0x06            where: event Ping(0x06)
         // 0x00 0x00 0x0d 0x0f  where: event data 4bytes ping timestamp.
-        // @see: https://github.com/winlinvip/simple-rtmp-server/issues/98
+        
         if (chunk->cid == RTMP_CID_ProtocolControl && fmt == RTMP_FMT_TYPE1) {
             srs_warn("accept cid=2, fmt=1 to make librtmp happy.");
         } else {
@@ -1313,7 +1313,7 @@ int SrsProtocol::read_message_header(SrsChunkStream* chunk, char fmt, int bh_siz
         pp[0] = *p++;
 
         // always use 31bits timestamp, for some server may use 32bits extended timestamp.
-        // @see https://github.com/winlinvip/simple-rtmp-server/issues/111
+        
         timestamp &= 0x7fffffff;
         
         /**
@@ -1509,12 +1509,12 @@ int SrsProtocol::on_recv_message(SrsMessage* msg)
 
             // for some server, the actual chunk size can greater than the max value(65536),
             // so we just warning the invalid chunk size, and actually use it is ok,
-            // @see: https://github.com/winlinvip/simple-rtmp-server/issues/160
+            
             if (pkt->chunk_size < SRS_CONSTS_RTMP_MIN_CHUNK_SIZE 
                 || pkt->chunk_size > SRS_CONSTS_RTMP_MAX_CHUNK_SIZE) 
             {
                 srs_warn("accept chunk size %d, but should in [%d, %d], "
-                    "@see: https://github.com/winlinvip/simple-rtmp-server/issues/160",
+                    "@see: https://uubridge.net",
                     pkt->chunk_size, SRS_CONSTS_RTMP_MIN_CHUNK_SIZE, 
                     SRS_CONSTS_RTMP_MAX_CHUNK_SIZE);
             }
@@ -1881,7 +1881,7 @@ int SrsConnectAppPacket::decode(SrsStream* stream)
     if (!stream->empty()) {
         srs_freep(args);
         
-        // see: https://github.com/winlinvip/simple-rtmp-server/issues/186
+        
         // the args maybe any amf0, for instance, a string. we should drop if not object.
         SrsAmf0Any* any = NULL;
         if ((ret = SrsAmf0Any::discovery(stream, &any)) != ERROR_SUCCESS) {

@@ -234,7 +234,7 @@ bool get_proc_system_stat(SrsProcSystemStat& r)
             continue;
         }
         
-        // @see: read_stat_cpu() from https://github.com/sysstat/sysstat/blob/master/rd_stats.c#L88
+        
         // @remark, ignore the filed 10 cpu_guest_nice
         sscanf(buf + 5, "%llu %llu %llu %llu %llu %llu %llu %llu %llu\n", 
             &r.user, 
@@ -392,7 +392,7 @@ bool srs_get_disk_vmstat_stat(SrsDiskStat& r)
     
     static char buf[1024];
     while (fgets(buf, sizeof(buf), f)) {
-        // @see: read_vmstat_paging() from https://github.com/sysstat/sysstat/blob/master/rd_stats.c#L495
+        
         if (strncmp(buf, "pgpgin ", 7) == 0) {
             sscanf(buf + 7, "%lu\n", &r.pgpgin);
         } else if (strncmp(buf, "pgpgout ", 8) == 0) {
@@ -531,7 +531,7 @@ void srs_update_disk_stat()
             && cpuinfo->ok && cpuinfo->nb_processors > 0
             && o.ticks < r.ticks
         ) {
-            // @see: write_ext_stat() from https://github.com/sysstat/sysstat/blob/master/iostat.c#L979
+            
             // TODO: FIXME: the USER_HZ assert to 100, so the total_delta ticks *10 is ms.
             double delta_ms = r.cpu.total_delta * 10 / cpuinfo->nb_processors;
             unsigned int ticks = r.ticks - o.ticks;
@@ -582,7 +582,7 @@ void srs_update_meminfo()
     
     static char buf[1024];
     while (fgets(buf, sizeof(buf), f)) {
-        // @see: read_meminfo() from https://github.com/sysstat/sysstat/blob/master/rd_stats.c#L227
+        
         if (strncmp(buf, "MemTotal:", 9) == 0) {
             sscanf(buf + 9, "%lu", &r.MemTotal);
         } else if (strncmp(buf, "MemFree:", 8) == 0) {
@@ -685,7 +685,7 @@ void srs_update_platform_info()
             return;
         }
         
-        // @see: read_loadavg() from https://github.com/sysstat/sysstat/blob/master/rd_stats.c#L402
+        
         // @remark, we use our algorithm, not sysstat.
         fscanf(f, "%lf %lf %lf\n", 
             &r.load_one_minutes, 
@@ -759,7 +759,7 @@ void srs_update_network_devices()
             
             SrsNetworkDevices& r = _srs_system_network_devices[i];
     
-            // @see: read_net_dev() from https://github.com/sysstat/sysstat/blob/master/rd_stats.c#L786
+            
             // @remark, we use our algorithm, not sysstat.
             sscanf(buf, "%6[^:]:%llu %lu %lu %lu %lu %lu %lu %lu %llu %lu %lu %lu %lu %lu %lu %lu\n",
                 r.name, &r.rbytes, &r.rpackets, &r.rerrs, &r.rdrop, &r.rfifo, &r.rframe, &r.rcompressed, &r.rmulticast,
@@ -833,7 +833,7 @@ void srs_update_rtmp_server(int nb_conn, SrsKbps* kbps)
         fgets(buf, sizeof(buf), f);
         
         while (fgets(buf, sizeof(buf), f)) {
-            // @see: et_sockstat_line() from https://github.com/shemminger/iproute2/blob/master/misc/ss.c
+            
             if (strncmp(buf, "sockets: used ", 14) == 0) {
                 sscanf(buf + 14, "%d\n", &nb_socks);
             } else if (strncmp(buf, "TCP: ", 5) == 0) {
@@ -864,7 +864,7 @@ void srs_update_rtmp_server(int nb_conn, SrsKbps* kbps)
         static char buf[1024];
         fgets(buf, sizeof(buf), f);
         
-        // @see: https://github.com/shemminger/iproute2/blob/master/misc/ss.c
+        
         while (fgets(buf, sizeof(buf), f)) {
             // @see: get_snmp_int("Tcp:", "CurrEstab", &sn.tcp_estab)
             // tcp stat title
@@ -883,7 +883,7 @@ void srs_update_rtmp_server(int nb_conn, SrsKbps* kbps)
         fclose(f);
     }
     
-    // @see: https://github.com/shemminger/iproute2/blob/master/misc/ss.c
+    
     // TODO: FIXME: ignore the slabstat, @see: get_slabstat()
     if (true) {
         // @see: print_summary()
@@ -932,7 +932,7 @@ void retrieve_local_ipv4_ips()
         // retrieve ipv4 addr
         // ignore the tun0 network device, 
         // which addr is NULL.
-        // @see: https://github.com/winlinvip/simple-rtmp-server/issues/141
+        
         if (addr && addr->sa_family == AF_INET) {
             in_addr* inaddr = &((sockaddr_in*)addr)->sin_addr;
             

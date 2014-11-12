@@ -505,7 +505,7 @@ std::string __full_conf = ""
     "    # it's strongly recommend to open the debug_srs_upnode,                                                                            \n"
     "    # when connect to upnode, it will take the debug info,                                                                             \n"
     "    # for example, the id, source id, pid.                                                                                             \n"
-    "    # please see: https://github.com/winlinvip/simple-rtmp-server/wiki/v1_CN_SrsLog                                                          \n"
+    "    # please see                                                          \n"
     "    # default: on                                                                                                                      \n"
     "    debug_srs_upnode    on;                                                                                                            \n"
     "}                                                                                                                                      \n"
@@ -516,17 +516,17 @@ std::string __full_conf = ""
     "    # if the page url of client not in the refer, access denied.                                                                       \n"
     "    # if not specified this field, allow all.                                                                                          \n"
     "    # default: not specified.                                                                                                          \n"
-    "    refer           github.com github.io;                                                                                              \n"
+    "    refer           uubridge.com uubridge.io;                                                                                              \n"
     "    # refer for publish clients specified.                                                                                             \n"
     "    # the common refer is not overrided by this.                                                                                       \n"
     "    # if not specified this field, allow all.                                                                                          \n"
     "    # default: not specified.                                                                                                          \n"
-    "    refer_publish   github.com github.io;                                                                                              \n"
+    "    refer_publish   uubridge.com uubridge.io;                                                                                              \n"
     "    # refer for play clients specified.                                                                                                \n"
     "    # the common refer is not overrided by this.                                                                                       \n"
     "    # if not specified this field, allow all.                                                                                          \n"
     "    # default: not specified.                                                                                                          \n"
-    "    refer_play      github.com github.io;                                                                                              \n"
+    "    refer_play      uubridge.com uubridge.io;                                                                                              \n"
     "}                                                                                                                                      \n"
     "                                                                                                                                       \n"
     "# the vhost which forward publish streams.                                                                                             \n"
@@ -2722,20 +2722,20 @@ VOID TEST(ConfigMainTest, ParseFullConf_refer_anti_suck)
     EXPECT_TRUE(NULL != conf.get_refer(vhost));
     if (true) {
         SrsConfDirective* refer = conf.get_refer(vhost);
-        EXPECT_STREQ("github.com", refer->arg0().c_str());
-        EXPECT_STREQ("github.io", refer->arg1().c_str());
+        EXPECT_STREQ("uubridge.com", refer->arg0().c_str());
+        EXPECT_STREQ("uubridge.io", refer->arg1().c_str());
     }
     EXPECT_TRUE(NULL != conf.get_refer_play(vhost));
     if (true) {
         SrsConfDirective* refer = conf.get_refer_play(vhost);
-        EXPECT_STREQ("github.com", refer->arg0().c_str());
-        EXPECT_STREQ("github.io", refer->arg1().c_str());
+        EXPECT_STREQ("uubridge.com", refer->arg0().c_str());
+        EXPECT_STREQ("uubridge.io", refer->arg1().c_str());
     }
     EXPECT_TRUE(NULL != conf.get_refer_publish(vhost));
     if (true) {
         SrsConfDirective* refer = conf.get_refer_publish(vhost);
-        EXPECT_STREQ("github.com", refer->arg0().c_str());
-        EXPECT_STREQ("github.io", refer->arg1().c_str());
+        EXPECT_STREQ("uubridge.com", refer->arg0().c_str());
+        EXPECT_STREQ("uubridge.io", refer->arg1().c_str());
     }
     EXPECT_EQ(60000, conf.get_chunk_size(vhost));
     EXPECT_TRUE(NULL == conf.get_forward(vhost));
@@ -5075,32 +5075,32 @@ VOID TEST(ConfigMainTest, CheckConf_refer)
 {
     if (true) {
         MockSrsConfig conf;
-        EXPECT_TRUE(ERROR_SUCCESS == conf.parse(_MIN_OK_CONF"vhost v{refer github.com github.io;}"));
+        EXPECT_TRUE(ERROR_SUCCESS == conf.parse(_MIN_OK_CONF"vhost v{refer uubridge.com uubridge.io;}"));
     }
     
     if (true) {
         MockSrsConfig conf;
-        EXPECT_TRUE(ERROR_SUCCESS != conf.parse(_MIN_OK_CONF"vhost v{refers github.com github.io;}"));
+        EXPECT_TRUE(ERROR_SUCCESS != conf.parse(_MIN_OK_CONF"vhost v{refers uubridge.com uubridge.io;}"));
     }
     
     if (true) {
         MockSrsConfig conf;
-        EXPECT_TRUE(ERROR_SUCCESS == conf.parse(_MIN_OK_CONF"vhost v{refer_publish github.com github.io;}"));
+        EXPECT_TRUE(ERROR_SUCCESS == conf.parse(_MIN_OK_CONF"vhost v{refer_publish uubridge.com uubridge.io;}"));
     }
     
     if (true) {
         MockSrsConfig conf;
-        EXPECT_TRUE(ERROR_SUCCESS != conf.parse(_MIN_OK_CONF"vhost v{refer_publishs github.com github.io;}"));
+        EXPECT_TRUE(ERROR_SUCCESS != conf.parse(_MIN_OK_CONF"vhost v{refer_publishs uubridge.com uubridge.io;}"));
     }
     
     if (true) {
         MockSrsConfig conf;
-        EXPECT_TRUE(ERROR_SUCCESS == conf.parse(_MIN_OK_CONF"vhost v{refer_play github.com github.io;}"));
+        EXPECT_TRUE(ERROR_SUCCESS == conf.parse(_MIN_OK_CONF"vhost v{refer_play uubridge.com uubridge.io;}"));
     }
     
     if (true) {
         MockSrsConfig conf;
-        EXPECT_TRUE(ERROR_SUCCESS != conf.parse(_MIN_OK_CONF"vhost v{refer_plays github.com github.io;}"));
+        EXPECT_TRUE(ERROR_SUCCESS != conf.parse(_MIN_OK_CONF"vhost v{refer_plays uubridge.com uubridge.io;}"));
     }
 }
 

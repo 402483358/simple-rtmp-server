@@ -98,11 +98,11 @@ public:
     * @param interval_us, the sleep interval when cycle finished.
     * @param joinable, if joinable, other thread must stop the thread.
     * @remark if joinable, thread never quit itself, or memory leak. 
-    * @see: https://github.com/winlinvip/simple-rtmp-server/issues/78
+    
     */
     /**
     * TODO: FIXME: maybe all thread must be reap by others threads, 
-    * @see: https://github.com/winlinvip/simple-rtmp-server/issues/77
+    
     */
     SrsThread(ISrsThreadHandler* thread_handler, int64_t interval_us, bool joinable);
     virtual ~SrsThread();

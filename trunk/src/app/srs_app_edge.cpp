@@ -216,7 +216,6 @@ int SrsEdgeIngester::connect_app(string ep_server, string ep_port)
     }
     
     // notify server the edge identity,
-    // @see https://github.com/winlinvip/simple-rtmp-server/issues/147
     SrsAmf0Object* data = req->args;
     data->set("srs_sig", SrsAmf0Any::str(RTMP_SIG_SRS_KEY));
     data->set("srs_server", SrsAmf0Any::str(RTMP_SIG_SRS_KEY" "RTMP_SIG_SRS_VERSION" ("RTMP_SIG_SRS_URL_SHORT")"));
@@ -243,8 +242,7 @@ int SrsEdgeIngester::connect_app(string ep_server, string ep_port)
     std::string tc_url = srs_generate_tc_url(ep_server, req->vhost, req->app, ep_port, param);
     
     // upnode server identity will show in the connect_app of client.
-    // @see https://github.com/winlinvip/simple-rtmp-server/issues/160
-    // the debug_srs_upnode is config in vhost and default to true.
+
     bool debug_srs_upnode = _srs_config->get_debug_srs_upnode(req->vhost);
     if ((ret = client->connect_app(req->app, tc_url, req, debug_srs_upnode)) != ERROR_SUCCESS) {
         srs_error("connect with server failed, tcUrl=%s, dsu=%d. ret=%d", 
@@ -326,7 +324,6 @@ int SrsEdgeIngester::connect_server(string& ep_server, string& ep_port)
     
     SrsConfDirective* conf = _srs_config->get_vhost_edge_origin(_req->vhost);
     
-    // @see https://github.com/winlinvip/simple-rtmp-server/issues/79
     // when origin is error, for instance, server is shutdown,
     // then user remove the vhost then reload, the conf is empty.
     if (!conf) {
@@ -644,7 +641,7 @@ int SrsEdgeForwarder::connect_app(string ep_server, string ep_port)
     }
     
     // notify server the edge identity,
-    // @see https://github.com/winlinvip/simple-rtmp-server/issues/147
+
     SrsAmf0Object* data = req->args;
     data->set("srs_sig", SrsAmf0Any::str(RTMP_SIG_SRS_KEY));
     data->set("srs_server", SrsAmf0Any::str(RTMP_SIG_SRS_KEY" "RTMP_SIG_SRS_VERSION" ("RTMP_SIG_SRS_URL_SHORT")"));
@@ -671,7 +668,7 @@ int SrsEdgeForwarder::connect_app(string ep_server, string ep_port)
     std::string tc_url = srs_generate_tc_url(ep_server, req->vhost, req->app, ep_port, param);
     
     // upnode server identity will show in the connect_app of client.
-    // @see https://github.com/winlinvip/simple-rtmp-server/issues/160
+
     // the debug_srs_upnode is config in vhost and default to true.
     bool debug_srs_upnode = _srs_config->get_debug_srs_upnode(req->vhost);
     if ((ret = client->connect_app(req->app, tc_url, req, debug_srs_upnode)) != ERROR_SUCCESS) {
@@ -808,7 +805,7 @@ int SrsPublishEdge::on_client_publish()
         return ret;
     }
     
-    // @see https://github.com/winlinvip/simple-rtmp-server/issues/180
+
     // to avoid multiple publish the same stream on the same edge,
     // directly enter the publish stage.
     if (true) {
@@ -820,7 +817,7 @@ int SrsPublishEdge::on_client_publish()
     // start to forward stream to origin.
     ret = forwarder->start();
     
-    // @see https://github.com/winlinvip/simple-rtmp-server/issues/180
+
     // when failed, revert to init
     if (ret != ERROR_SUCCESS) {
         SrsEdgeState pstate = state;

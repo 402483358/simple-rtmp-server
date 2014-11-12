@@ -370,7 +370,7 @@ extern char* srs_amf0_human_print(srs_amf0_t amf0, char** pdata, int* psize);
 */
 /**
 For the example file: 
-    http://winlinvip.github.io/srs.release/3rdparty/720p.h264.raw
+    
 The data sequence is:
     // SPS
     000000016742802995A014016E40

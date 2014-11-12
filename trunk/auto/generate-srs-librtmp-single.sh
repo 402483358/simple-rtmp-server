@@ -97,7 +97,7 @@ COMPILE='gcc example.c srs_librtmp.cpp -g -O0 -lstdc++ -o example'
 cat << END >$FILE
 /**
 # Example to use srs-librtmp
-# see: https://github.com/winlinvip/simple-rtmp-server/wiki/v2_CN_SrsLibrtmp
+
     ${COMPILE}
 */
 #include <stdio.h>

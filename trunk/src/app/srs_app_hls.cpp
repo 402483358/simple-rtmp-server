@@ -136,7 +136,7 @@ u_int8_t mpegts_header[] = {
     0xe1, 0x00,
     0xf0, 0x00,
     // must generate header with/without video, @see:
-    // https://github.com/winlinvip/simple-rtmp-server/issues/40
+    
     0x1b, 0xe1, 0x00, 0xf0, 0x00, /* h264, pid=0x100=256 */
     0x0f, 0xe1, 0x01, 0xf0, 0x00, /* aac, pid=0x101=257 */
     /*0x03, 0xe1, 0x01, 0xf0, 0x00,*/ /* mp3 */
@@ -1084,7 +1084,7 @@ int SrsHlsCache::write_audio(SrsAvcAacCodec* codec, SrsHlsMuxer* muxer, int64_t 
     // for example, pure audio when start, audio/video when publishing,
     // pure audio again for audio disabled.
     // so we reap event when the audio incoming when segment overflow.
-    // @see https://github.com/winlinvip/simple-rtmp-server/issues/151
+    
     if (muxer->is_segment_overflow()) {
         if ((ret = reap_segment("audio", muxer, af->pts)) != ERROR_SUCCESS) {
             return ret;
@@ -1518,7 +1518,7 @@ void SrsHls::hls_mux()
     // reportable
     if (pithy_print->can_print()) {
         // the run time is not equals to stream time,
-        // @see: https://github.com/winlinvip/simple-rtmp-server/issues/81#issuecomment-48100994
+        
         // it's ok.
         srs_trace("-> "SRS_CONSTS_LOG_HLS
             " time=%"PRId64", stream dts=%"PRId64"(%"PRId64"ms), sequence_no=%d", 

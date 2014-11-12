@@ -40,7 +40,7 @@ links:
     nginx:
         http://nginx.org/
     http-parser:
-        https://github.com/joyent/http-parser
+        https://uubridge.com/joyent/http-parser
     state-threads:
         http://sourceforge.net/projects/state-threads
     ffmpeg: 

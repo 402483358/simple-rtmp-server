@@ -253,9 +253,7 @@ int SrsAvcAacCodec::audio_aac_demux(char* data, int size, SrsCodecSample* sample
         aac_profile--;
         
         // TODO: FIXME: to support aac he/he-v2, see: ngx_rtmp_codec_parse_aac_header
-        // @see: https://github.com/winlinvip/nginx-rtmp-module/commit/3a5f9eea78fc8d11e8be922aea9ac349b9dcbfc2
         // 
-        // donot force to LC, @see: https://github.com/winlinvip/simple-rtmp-server/issues/81
         // the source will print the sequence header info.
         //if (aac_profile > 3) {
             // Mark all extended profiles as LC
@@ -586,7 +584,6 @@ int SrsAvcAacCodec::avc_demux_ibmf_format(SrsStream* stream, SrsCodecSample* sam
         }
         
         // maybe stream is invalid format.
-        // see: https://github.com/winlinvip/simple-rtmp-server/issues/183
         if (NALUnitLength < 0) {
             ret = ERROR_HLS_DECODE_ERROR;
             srs_error("maybe stream is AnnexB format. ret=%d", ret);

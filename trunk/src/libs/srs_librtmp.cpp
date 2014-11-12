@@ -71,7 +71,7 @@ struct Context
     int stream_id;
     
     // for h264 raw stream, 
-    // see: https://github.com/winlinvip/simple-rtmp-server/issues/66#issuecomment-62240521
+    
     SrsStream raw_stream;
     // about SPS, @see: 7.3.2.1.1, H.264-AVC-ISO_IEC_14496-10-2012.pdf, page 62
     std::string h264_sps;

@@ -171,7 +171,7 @@ int SrsFFMPEG::initialize_transcode(SrsConfDirective* engine)
         }
     }
     
-    // @see, https://github.com/winlinvip/simple-rtmp-server/issues/145
+    
     if (acodec == SRS_RTMP_ENCODER_LIBAACPLUS) {
         if (abitrate < 16 || abitrate > 72) {
             ret = ERROR_ENCODER_ABITRATE;

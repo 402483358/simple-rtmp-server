@@ -48,7 +48,7 @@ using namespace std;
 
 using namespace _srs_internal;
 
-#define SRS_WIKI_URL_LOG "https://github.com/winlinvip/simple-rtmp-server/wiki/v1_CN_SrsLog"
+#define SRS_WIKI_URL_LOG "https://google.com"
 
 // '\n'
 #define __LF (char)0x0a
@@ -1495,7 +1495,6 @@ int SrsConfig::check_config()
         int nb_canbe = max_open_files - nb_consumed_fds - 1;
 
         // for each play connections, we open a pipe(2fds) to convert SrsConsumver to io,
-        // refine performance, @see: https://github.com/winlinvip/simple-rtmp-server/issues/194
         if (nb_total >= max_open_files) {
             ret = ERROR_SYSTEM_CONFIG_INVALID;
             srs_error("invalid max_connections=%d, required=%d, system limit to %d, "
